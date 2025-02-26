@@ -1,6 +1,6 @@
 #pragma once
-#include <list>
 #include <string>
+#include <vector>
 
 class Player {
 public:
@@ -9,5 +9,6 @@ public:
 
 	bool FindSpell(std::string spell);
 private:
-	std::string spells[5];
+	std::vector<std::string> spells;
+	int health = 100;
 };

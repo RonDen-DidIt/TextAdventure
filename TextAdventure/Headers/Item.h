@@ -2,6 +2,7 @@
 
 class Item {
 public:
-	void Description();
-	void Use();
+	virtual void Description();
+	virtual void Use();
 };
+

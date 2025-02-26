@@ -8,6 +8,8 @@ public:
 	~Game();
 	void run();
 private:
-	Room rooms[20][20];
+	Room rooms[20][20] = {};
 	Player* player;
+
+	std::string descriptions[4] = {"The room is", "Big room", "Small room", "No room"};
 };
