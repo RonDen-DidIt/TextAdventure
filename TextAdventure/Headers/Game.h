@@ -15,7 +15,6 @@ private:
 	static const int columns = 6 ;
 
 	Room rooms[rows][columns] = {};
-	int map[rows][columns] = {};
 
 	std::array<std::string, 4> descriptions = {"The room is", "Big room", "Small room", "No room"};
 	std::array<Item*, 1>  items = {

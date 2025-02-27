@@ -11,8 +11,8 @@ public:
 	~Room();
 
 	void Description() const;
-	void SetDescription(std::string descript);
-
+	void SetMembers(std::string descript, Item* item_ptr);
+	bool empty;
 private:
 	std::string description;
 };
