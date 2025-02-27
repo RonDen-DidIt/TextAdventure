@@ -1,4 +1,7 @@
 #pragma once
+#include "Beyblade.h"
+#include "Item.h"
+#include <array>
 #include "Player.h"
 #include "Room.h"
 
@@ -8,8 +11,15 @@ public:
 	~Game();
 	void run();
 private:
-	Room rooms[20][20] = {};
-	Player* player;
+	static const int rows = 6;
+	static const int columns = 6 ;
 
-	std::string descriptions[4] = {"The room is", "Big room", "Small room", "No room"};
+	Room rooms[rows][columns] = {};
+	int map[rows][columns] = {};
+
+	std::array<std::string, 4> descriptions = {"The room is", "Big room", "Small room", "No room"};
+	std::array<Item*, 1>  items = {
+		new Beyblade()
+	};
 };
+

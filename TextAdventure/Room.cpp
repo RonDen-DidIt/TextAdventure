@@ -1,7 +1,7 @@
 #include "Headers/Room.h"
 #include <iostream>
 
-Room::Room(): item(nullptr), description("Empty room") {}
+Room::Room(): item(nullptr), description("Empty space") {}
 Room::Room(std::string descript, Item* item) : description(descript), item(item) {}
 Room::~Room() {}
 
