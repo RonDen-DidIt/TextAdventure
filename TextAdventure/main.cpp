@@ -4,6 +4,6 @@
 
 int main() {
 	Game thisisagame;
-	thisisagame.run();
+	thisisagame.Run();
 	return 0;
 }

@@ -1,27 +1,56 @@
+#include "Headers/Beyblade.h"
 #include "Headers/Game.h"
-#include <time.h>
 #include <iostream>
+#include <time.h>
 
 Game::Game() {
+	player = new Player;
+
 	srand(time(NULL));
-	for (int i = 0; i < 5; i++) { // Switch to looping throuhg whole array
-		rooms[rand() % rows][rand() % columns].SetMembers(descriptions[rand() % descriptions.size()], items[rand() % items.size()]);
+	for (int i = 0; i < columns; i++) {
+		for (int j = 0; j < rows; j++) {
+			bool notEmpty = (rand() % 4 == 1);
+			if (notEmpty) {
+				SetRandomMembers(rooms[j][i]);
+			}
+		}
 	}
 }
+
 Game::~Game() {}
 
-void Game::run() {
-	while (true) {
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++) {
-				std::string out = (rooms[i][j].empty) ? "[ ]" : "[O]";
-				std::cout << out;
+void Game::DrawMap() {
+	for (int i = 0; i < columns; i++) {
+		for (int j = 0; j < rows; j++) {
+			std::string out = (rooms[j][i].empty) ? "[ ]" : "[O]";
+			if (player->GetX() == j && player->GetY() == i) {
+				out = "[X]";
 			}
-			std::cout << "\n";
+			std::cout << out;
 		}
+		std::cout << "\n";
+	}
+}
+
+void Game::SetRandomMembers(Room& room) {
+	int itemNumber = (rand() % totalItems);
+
+	switch (itemNumber) {
+	case 0:
+		itemsVector.push_back(new Beyblade);
+	}
+	room.SetMembers(descriptionsArray[rand() % (descriptionsArray.size())], itemsVector.back());
+}
+
+void Game::Run() {
+	while (true) {
+		DrawMap();
 		break;
 		//print room description
 		//prompt input
 		//process input
 	}
 }
+
+
+
