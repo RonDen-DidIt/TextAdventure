@@ -1,4 +1,5 @@
 #pragma once
+#include "Item.h"
 #include <string>
 #include <vector>
 
@@ -13,9 +14,11 @@ public:
 	int GetY();
 	void SetPos(int x, int y);
 	
-	void GetCommand();
+	std::string GetCommand();
+	void inventoryInsert(Item* item_ptr);
 private:
 	std::vector<std::string> spells;
+	std::vector<Item*> inventory;
 	int health = 100;
 	int x = 0;
 	int y = 0;

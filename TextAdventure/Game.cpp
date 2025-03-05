@@ -1,4 +1,6 @@
-#include "Headers/Beyblade.h"
+#include "Headers/BoxOfDonuts.h"
+#include "Headers/Lamp.h"
+#include "Headers/Cat.h"
 #include "Headers/Game.h"
 #include <iostream>
 #include <time.h>
@@ -30,25 +32,57 @@ void Game::DrawMap() {
 		}
 		std::cout << "\n";
 	}
+	std::cout << "\n";
 }
 
 void Game::SetRandomMembers(Room& room) {
-	int itemNumber = (rand() % totalItems);
+	int itemNumber = (rand() % (totalItems + 3));
+	
+	room.SetDescription(descriptionsArray[rand() % (descriptionsArray.size())]);
 
 	switch (itemNumber) {
 	case 0:
-		itemsVector.push_back(new Beyblade);
+		itemsVector.push_back(new BoxOfDonuts);
+		break;
+	case 1:
+		itemsVector.push_back(new Lamp);
+		break;
+	case 2:
+		itemsVector.push_back(new Cat);
+		break;
+	default:
+		return;
 	}
-	room.SetMembers(descriptionsArray[rand() % (descriptionsArray.size())], itemsVector.back());
+	room.SetItem(itemsVector.back());
 }
 
 void Game::Run() {
+	std::string nextOutput;
 	while (true) {
+		system("cls");
 		DrawMap();
-		break;
-		//print room description
-		//prompt input
-		//process input
+		Room& playerRoom = rooms[player->GetX()][player->GetY()];
+		playerRoom.Description();
+		if (playerRoom.item != nullptr) {
+			playerRoom.item->Description();
+		}
+		std::cout << nextOutput << "\n";
+		nextOutput = "";
+		std::string command = player->GetCommand();
+		if (command.length() <= 0) {
+			continue;
+		}
+		if (command == "grab") {
+			std::cout << playerRoom.item;
+			if (playerRoom.item == nullptr) {
+				nextOutput = "This room has no item";
+				continue;
+			}
+			else {
+				player->inventoryInsert(playerRoom.item);
+				playerRoom.SetItem(nullptr);
+			}
+		}
 	}
 }
 

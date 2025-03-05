@@ -6,11 +6,14 @@ Room::Room(std::string descript, Item* item) : description(descript), item(item)
 Room::~Room() {}
 
 void Room::Description() const {
-	std::cout << description << "\n";
+	std::cout << description << "\n\n";
 }
 
-void Room::SetMembers(std::string descript, Item* item_ptr) {
+void Room::SetDescription(std::string descript) {
 	description = descript;
-	item = item_ptr;
 	empty = false;
+}
+
+void Room::SetItem(Item* item_ptr) {
+	item = item_ptr;
 }

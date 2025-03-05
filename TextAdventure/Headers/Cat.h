@@ -1,7 +1,9 @@
 #pragma once
 #include "Item.h"
 
-class Beyblade : public Item {
+class Cat : public Item {
 	 void Description() const override;
 	 void Use() override;
+private:
+	bool purring = false;
 };

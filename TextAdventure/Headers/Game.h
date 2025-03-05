@@ -16,7 +16,7 @@ public:
 private:
 	static const int rows = 6;
 	static const int columns = 6;
-	static const int totalItems = 1;
+	static const int totalItems = 3;
 
 	Room rooms[rows][columns] = {};
 
