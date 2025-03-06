@@ -28,9 +28,9 @@ Game::~Game() {
 void Game::DrawMap() {
 	for (int i = 0; i < columns; i++) {
 		for (int j = 0; j < rows; j++) {
-			std::string out = (rooms[j][i].empty) ? "[ ]" : "[O]";
+			std::string out = (rooms[j][i].empty) ? "[ ]" : "[\033[38;5;120mO\033[38;5;255m]";
 			if (player->GetX() == j && player->GetY() == i) {
-				out = "[X]";
+				out = "[\033[38;5;196mX\033[38;5;255m]";
 			}
 			std::cout << out;
 		}
