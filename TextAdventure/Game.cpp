@@ -12,7 +12,7 @@ Game::Game() {
 	for (int i = 0; i < columns; i++) {
 		for (int j = 0; j < rows; j++) {
 			bool notEmpty = (rand() % 4 == 1);
-			if (notEmpty) {
+			if (notEmpty and player->GetX() != j and player->GetY() != i) {
 				SetRandomMembers(rooms[j][i]);
 			}
 		}
@@ -58,31 +58,64 @@ void Game::SetRandomMembers(Room& room) {
 
 void Game::Run() {
 	std::string nextOutput;
+	bool clear = true;
+	int count = 0;
 	while (true) {
-		system("cls");
-		DrawMap();
 		Room& playerRoom = rooms[player->GetX()][player->GetY()];
-		playerRoom.Description();
+		if (clear || count > 3) {
+			system("cls");
+			DrawMap();
+			playerRoom.Description();
+			clear = false;
+			count = 0;
+		};
+
+
 		if (playerRoom.item != nullptr) {
 			playerRoom.item->Description();
+			std::cout << "\nUse 'grab' to pick it up\n\n";
 		}
-		std::cout << nextOutput << "\n";
-		nextOutput = "";
+		
 		std::string command = player->GetCommand();
-		if (command.length() <= 0) {
+		count++;
+		if (command == "w") {
+			player->AddY(-1);
+		}
+		else if (command == "s") {
+			player->AddY(1);
+		}
+		else if (command == "a") {
+			player->AddX(-1);
+		}
+		else if (command == "d") {
+			player->AddX(1);
+		}
+		else if (command == "use") {
+			player->Use();
 			continue;
 		}
-		if (command == "grab") {
-			std::cout << playerRoom.item;
+		else if (command == "grab") {
 			if (playerRoom.item == nullptr) {
-				nextOutput = "This room has no item";
+				std::cout << "This room has no item\n";
 				continue;
 			}
 			else {
-				player->inventoryInsert(playerRoom.item);
+				player->InventoryInsert(playerRoom.item);
+				std::cout << "You picked up a " << playerRoom.item->name << "\n";
 				playerRoom.SetItem(nullptr);
+				continue;
 			}
 		}
+		else if (command == "help") {
+			std::cout << "w: move up\ns: move down\na: move left\nd: move right\ngrab: pick up item\nuse: use item\nclear: clears screen";
+			continue;
+		}
+		else if (command == "clear") {
+		}
+		else {
+			continue;
+		}
+		clear = true;
 	}
 }
 

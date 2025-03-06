@@ -20,7 +20,7 @@ private:
 
 	Room rooms[rows][columns] = {};
 
-	std::array<std::string, 4> descriptionsArray = {"The room is", "Big room", "Small room", "No room"};
+	std::array<std::string, 4> descriptionsArray = {"It's a dark room", "It's a large room", "It's just another room", "It's a room"};
 	std::vector<Item*> itemsVector = {};
 
 	Player* player;

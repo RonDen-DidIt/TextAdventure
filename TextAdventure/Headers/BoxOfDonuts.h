@@ -2,8 +2,11 @@
 #include "Item.h"
 
 class BoxOfDonuts : public Item {
-	 void Description() const override;
-	 void Use() override;
+public:
+	BoxOfDonuts();
+	void Description() const override;
+	void Use() override;
 private:
-	int count = 0;
+	int count = 4;
 };
+

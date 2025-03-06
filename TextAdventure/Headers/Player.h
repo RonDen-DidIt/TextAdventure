@@ -12,10 +12,14 @@ public:
 	bool FindSpell(std::string spell);
 	int GetX();
 	int GetY();
+	void AddX(int add);
+	void AddY(int add);
 	void SetPos(int x, int y);
 	
 	std::string GetCommand();
-	void inventoryInsert(Item* item_ptr);
+	void InventoryInsert(Item* item_ptr);
+	void Use();
+	bool FindSpell();
 private:
 	std::vector<std::string> spells;
 	std::vector<Item*> inventory;
