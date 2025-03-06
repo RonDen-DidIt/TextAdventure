@@ -2,7 +2,7 @@
 #include <iostream>
 
 Room::Room() : item(nullptr), description("Empty space"), empty(true) {}
-Room::Room(std::string descript, Item* item) : description(descript), item(item) {}
+Room::Room(std::string descript, Item* item) : description(descript), item(item), empty(false) {}
 Room::~Room() {}
 
 void Room::Description() const {

@@ -2,6 +2,7 @@
 #include "Headers/Lamp.h"
 #include "Headers/Cat.h"
 #include "Headers/Game.h"
+#include <cstdlib>
 #include <iostream>
 #include <time.h>
 
