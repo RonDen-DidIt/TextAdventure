@@ -2,7 +2,7 @@
 #include <iostream>
 
 Cat::Cat() {
-	this->name = "dog";
+  this->name = "cat";
 }
 
 Cat::~Cat() {}
