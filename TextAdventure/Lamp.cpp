@@ -5,6 +5,8 @@ Lamp::Lamp() {
 	this->name = "lamp";
 }
 
+Lamp::~Lamp() {}
+
 void Lamp::Description() const {
 	std::cout << "You see an item! It says: I am a lamp\n";
 }

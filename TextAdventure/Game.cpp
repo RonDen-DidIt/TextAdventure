@@ -23,6 +23,7 @@ Game::~Game() {
 	for (int i = 0; i < itemsVector.size(); i++) {
 		delete itemsVector[i];
 	}
+	delete player;
 }
 
 void Game::DrawMap() {

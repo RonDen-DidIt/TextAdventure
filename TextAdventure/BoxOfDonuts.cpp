@@ -5,6 +5,8 @@ BoxOfDonuts::BoxOfDonuts() {
 	this->name = "boxofdonuts";
 }
 
+BoxOfDonuts::~BoxOfDonuts() {}
+
 void BoxOfDonuts::Description() const {
 	std::cout << "You see an item! It says: I am a box of donuts\n";
 }

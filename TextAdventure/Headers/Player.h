@@ -9,7 +9,6 @@ public:
 	~Player();
 
 
-	bool FindSpell(std::string spell);
 	int GetX();
 	int GetY();
 	void AddX(int add); // x+=add

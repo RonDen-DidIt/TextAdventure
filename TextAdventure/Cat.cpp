@@ -5,6 +5,8 @@ Cat::Cat() {
 	this->name = "cat";
 }
 
+Cat::~Cat() {}
+
 void Cat::Description() const {
 	std::cout << "You see an item! It says: I am a cat\n";
 }
