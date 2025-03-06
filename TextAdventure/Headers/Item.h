@@ -4,8 +4,8 @@
 
 class Item {
 public:
-	std::string name;
-	virtual void Description() const = 0;
-	virtual void Use() = 0;
+	std::string name; // Name
+	virtual void Description() const = 0; // Outputs item description
+	virtual void Use() = 0; // Uses the item
 };
 

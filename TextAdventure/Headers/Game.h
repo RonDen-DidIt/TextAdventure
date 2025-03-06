@@ -10,9 +10,9 @@ public:
 	Game();
 	~Game();
 
-	void DrawMap();
-	void SetRandomMembers(Room& room);
-	void Run();
+	void DrawMap(); // Draws the map to the screen
+	void SetRandomMembers(Room& room); // Setting a random item and description for room
+	void Run(); // Main game loop
 private:
 	static const int rows = 6;
 	static const int columns = 6;

@@ -65,15 +65,29 @@ void Player::Use() {
 	inventory[index - 1]->Use();
 }
 
-bool Player::FindSpell(std::string reqeusted) {
+bool Player::FindSpell() {
 	int left = 0;
 	int right = spells.size();
+	
+	std::string requested;
+	std::cout << "Spell: ";
+	std::getline(std::cin, requested);
 
 	while (left <= right) {
 		int middle = (left + right) / 2;
-		int compared = strcmp(reqeusted.c_str(), spells[middle].c_str());
-
+		int compared = strcmp(requested.c_str(), spells[middle].c_str());
+		
+		if (compared == -1) {
+			right = middle - 1;
+		}
+		else if (compared == 1) {
+			left = middle + 1;
+		}
+		else {
+			return true;
+		}
 	}
+	return false;
 }
 
 void Player::InventoryInsert(Item* item_ptr) {

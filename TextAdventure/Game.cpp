@@ -19,7 +19,11 @@ Game::Game() {
 	}
 }
 
-Game::~Game() {}
+Game::~Game() {
+	for (int i = 0; i < itemsVector.size(); i++) {
+		delete itemsVector[i];
+	}
+}
 
 void Game::DrawMap() {
 	for (int i = 0; i < columns; i++) {
@@ -71,24 +75,31 @@ void Game::Run() {
 		};
 
 
+
 		if (playerRoom.item != nullptr) {
 			playerRoom.item->Description();
 			std::cout << "\nUse 'grab' to pick it up\n\n";
 		}
 		
 		std::string command = player->GetCommand();
-		count++;
 		if (command == "w") {
+			if (player->GetY() - 1 >= 0)
 			player->AddY(-1);
 		}
 		else if (command == "s") {
-			player->AddY(1);
+			if (player->GetY() + 1 < columns) {
+				player->AddY(1);
+			}
 		}
 		else if (command == "a") {
-			player->AddX(-1);
+			if (player->GetX() - 1 >= 0) {
+				player->AddX(-1);
+			}
 		}
 		else if (command == "d") {
-			player->AddX(1);
+			if (player->GetX() + 1 < rows) {
+				player->AddX(1);
+			}
 		}
 		else if (command == "use") {
 			player->Use();
@@ -110,9 +121,19 @@ void Game::Run() {
 			std::cout << "w: move up\ns: move down\na: move left\nd: move right\ngrab: pick up item\nuse: use item\nclear: clears screen";
 			continue;
 		}
+		else if (command == "spell") {
+			if (player->FindSpell()) {
+				std::cout << "You have that spell";
+			}
+			else {
+				std::cout << "You don't have that spell";
+			}
+			continue;
+		}
 		else if (command == "clear") {
 		}
 		else {
+			count++;
 			continue;
 		}
 		clear = true;

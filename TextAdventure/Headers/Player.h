@@ -12,14 +12,14 @@ public:
 	bool FindSpell(std::string spell);
 	int GetX();
 	int GetY();
-	void AddX(int add);
-	void AddY(int add);
+	void AddX(int add); // x+=add
+	void AddY(int add); // y+=add
 	void SetPos(int x, int y);
 	
-	std::string GetCommand();
-	void InventoryInsert(Item* item_ptr);
-	void Use();
-	bool FindSpell();
+	std::string GetCommand(); // Gets user input and converts to lowercase
+	void InventoryInsert(Item* item_ptr); // Adds item_ptr to the spells vector
+	void Use(); // Uses an item
+	bool FindSpell(); // Prompts for a spell and binary searches that spell
 private:
 	std::vector<std::string> spells;
 	std::vector<Item*> inventory;

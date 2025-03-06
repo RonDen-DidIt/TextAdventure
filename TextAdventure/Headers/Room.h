@@ -10,9 +10,9 @@ public:
 	Room(std::string descript, Item* item);
 	~Room();
 
-	void Description() const;
-	void SetDescription(std::string descript);
-	void SetItem(Item* item_ptr);
+	void Description() const; // Outputs the objects description to the console
+	void SetDescription(std::string descript); // Sets the objects description
+	void SetItem(Item* item_ptr); // Sets the objects item
 	bool empty;
 private:
 	std::string description;
