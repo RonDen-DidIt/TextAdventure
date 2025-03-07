@@ -120,7 +120,7 @@ void Game::Run() {
 			}
 		}
 		else if (command == "help") {
-			std::cout << "w: move up\ns: move down\na: move left\nd: move right\ngrab: pick up item\nuse: use item\nclear: clears screen";
+			std::cout << "w: move up\ns: move down\na: move left\nd: move right\ngrab: pick up item\nuse: use item\nclear: clears screen\nquit: closes game";
 			continue;
 		}
 		else if (command == "spell") {
@@ -133,6 +133,9 @@ void Game::Run() {
 			continue;
 		}
 		else if (command == "clear") {
+		}
+		else if (command == "quit") {
+			return;
 		}
 		else {
 			count++;
