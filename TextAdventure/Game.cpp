@@ -120,11 +120,15 @@ void Game::Run() {
 			}
 		}
 		else if (command == "help") {
-			std::cout << "w: move up\ns: move down\na: move left\nd: move right\ngrab: pick up item\nuse: use item\nclear: clears screen\nquit: closes game";
+			std::cout << "w: move up\ns: move down\na: move left\nd: move right\ngrab: pick up item\nuse: use item\nclear: clears screen\nspell: check spell\nquit: closes game";
 			continue;
 		}
 		else if (command == "spell") {
-			if (player->FindSpell()) {
+			std::string spell;
+			std::cout << "Spell: ";
+			std::getline(std::cin, spell);
+
+			if (player->FindSpell(spell)) {
 				std::cout << "You have that spell";
 			}
 			else {

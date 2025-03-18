@@ -18,7 +18,7 @@ public:
 	std::string GetCommand(); // Gets user input and converts to lowercase
 	void InventoryInsert(Item* item_ptr); // Adds item_ptr to the spells vector
 	void Use(); // Uses an item
-	bool FindSpell(); // Prompts for a spell and binary searches that spell
+	bool FindSpell(std::string spell); // Prompts for a spell and binary searches that spell
 private:
 	std::vector<std::string> spells;
 	std::vector<Item*> inventory;
